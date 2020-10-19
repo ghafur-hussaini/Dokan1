@@ -1,0 +1,19 @@
+<label >تاریخ</label>
+<input type="text"#date [value]="today|date:long">
+<label for="">مشتریان</label>
+<select  name="cselector" id="cselector"(change)="onChangeCustomer()"[(ngModel)]=customer #temp =ngModel >
+  <option value=""></option>
+  <option *ngFor="let c of customers" value="{{c.id}}">{{c.customerName}}</option>
+</select>
+<label for="">مقدار میتیو</label>
+<input  type="text"   #amoung>
+<label for="">شماره تلفن</label>
+<select name="phone" id="phone" #phone >
+  <option value=""></option>
+   <option *ngFor="let p of PhonesArr"  value="{{p.phoneNumber}}">{{p.phoneNumber}}</option> 
+</select> 
+
+<label for="">مقدار پرداختی</label>
+<input  type="text" #cash>
+<label for="">باقیمانده</label>
+<input  type="text" (keyup.enter)="onCalculateBalance(cash.value,amoung.value,phone.value,date.value)"[value]=this.remain >

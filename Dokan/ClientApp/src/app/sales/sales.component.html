@@ -1,0 +1,194 @@
+
+
+<!-- <div>
+  <table cellspacing="5">
+  
+    <tr >
+      <td>جمع</td>
+      <td>قیمت</td>
+      <td>تعداد</td>
+      <td>نوع جنس</td>
+      <td>شماره</td>
+    </tr>
+ 
+  <tr>
+   
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td>
+      <select>
+        <option value=""></option>
+        <option *ngFor="let s of stuffs" value="s">{{s}}</option>
+      </select>
+    </td>
+    <td>1</td>
+  </tr>
+  <tr>
+   
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td>
+      <select>
+        <option value=""></option>
+        <option *ngFor="let s of stuffs" value="s">{{s}}</option>
+      </select>
+    </td>
+    <td>2</td>
+  </tr>
+  <tr>
+   
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td>
+      <select>
+        <option value=""></option>
+        <option *ngFor="let s of stuffs" value="s">{{s}}</option>
+      </select>
+    </td>
+    <td>3</td>
+  </tr>
+  <tr>
+   
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td>
+      <select>
+        <option value=""></option>
+        <option *ngFor="let s of stuffs" value="s">{{s}}</option>
+      </select>
+    </td>
+    <td>4</td>
+  </tr>
+  <tr>
+   
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td>
+      <select>
+        <option value=""></option>
+        <option *ngFor="let s of stuffs" value="s">{{s}}</option>
+      </select>
+    </td>
+    <td>5</td>
+  </tr>
+  <tr>
+   
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td><select>
+      <option value=""></option>
+      <option *ngFor="let s of stuffs" value="s">{{s}}</option>
+    </select>
+  </td>
+    <td>6</td>
+  </tr>
+  <tr>
+   
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td><select>
+      <option value=""></option>
+      <option *ngFor="let s of stuffs" value="s">{{s}}</option>
+    </select></td>
+    <td>7</td>
+  </tr>
+  <tr>
+   
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td>
+      <select>
+        <option value=""></option>
+        <option *ngFor="let s of stuffs" value="s">{{s}}</option>
+      </select>
+    </td>
+    <td>8</td>
+  </tr>
+  <tr>
+   
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td>
+      <select>
+      <option value=""></option>
+      <option *ngFor="let s of stuffs" value="s">{{s}}</option>
+    </select>
+   </td>
+    <td>9</td>
+  </tr>
+  <tr>
+   
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td>
+      <select>
+        <option value=""></option>
+        <option *ngFor="let s of stuffs" value="s">{{s}}</option>
+      </select>
+    </td>
+    <td>10</td>
+  </tr>
+  </table> -->
+  <div class="container">
+    <div>
+      <img src="assets/Data.jpg" class="myImage" alt="picture">
+    </div>
+
+ <div class="center" >
+  <div class="topdiv">
+    <div>
+      <label class="datelabel"><h6>تاریخ</h6></label> 
+      <input class="dateInput" #date [value]="today|date:'short'" type="text" name="" id="">
+    </div>
+    <div class="divcustomerInput">
+      <label class="customerLabel"for=""><h6>نام مشتری</h6></label>
+      <input class="customerInput" #name (keyup.enter)="CreateSellingFactor(date.value,name.value)"  type="text">
+    </div>
+    
+  </div>
+  <div class="row">
+  <div class="col-3"><h6>جمع</h6></div>
+  <div class="col-2"><h6>قیمت</h6></div>
+  <div class="col-2"><h6>تعداد</h6></div>
+  <div class="col-3"><h6>نوع جنس</h6></div>
+
+<div class="col-1"><h6>شماره</h6></div>
+</div>
+<div *ngFor="let n of number"  class="row">
+  <div class="col-3">
+    <input (click)="AddBill(quantity.value,price.value)"
+    [value]= onCalculateSum(quantity.value,price.value) #sum type="text"></div>
+  <div class="col-2">
+    <input #price (keyup.enter)="onCalculateSum(quantity.value,price.value)" type="text"></div>
+  <div class="col-2">
+     <select #quantity >
+       <option value=""></option>
+       <option *ngFor="let q of Qty" [value]=q> {{q}}</option>
+      </select></div>
+  <div class="col-3">
+    <select (change)="onStuffChange(item)" #item>
+    <option value=""></option>
+    <option *ngFor="let s of stuffs" value={{s.id}}>{{s.stuffName}}</option>
+  </select>
+</div>
+  <div  class="col-1">{{n}}</div>
+</div>
+<div class="row lastrow">
+ <div class="col-4 lastcol"><input type="text"><div><label class="lastlabel" for="">مجموع</label></div></div>
+ <div class="col-4 lastcol" ><input type="text"><div><label class="lastlabel" for="">پرداختی</label></div></div>
+ <div class="col-4 lastcol"><input type="text"><div><label class="lastlabel" for="">باقیمانده</label></div></div>
+</div>
+</div>
+
+  
+</div>

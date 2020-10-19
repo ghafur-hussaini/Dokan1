@@ -1,0 +1,97 @@
+table, th, td ,tr {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+  }
+  input {
+    width: 100%;
+  }
+  .row{
+    display: flex;
+    width: 100%;
+  }
+  .row::after{
+    display:block;
+    clear: both;
+    content: "";
+  }
+  .col-1{width: 8.33%; text-align: center;}
+  .col-2{width: 16.66%;  text-align: center;}
+  .col-3{width: 25%;  text-align: center;}
+  .col-4{width: 33.33%;}
+  .col-5{width: 41.66%;}
+  .col-6{width: 50%;}
+  .col-7{width: 58.33%;}
+  .col-8{width: 66.66%;}
+  .col-9{width: 75%;}
+  .col-10{width: 83.33%;}
+  .col-11{width: 91.66%}
+  .col-12{width: 100%;}
+  * {
+    box-sizing: border-box;
+  }
+  [class*="col-"]{
+ border: 2px solid green;
+ padding: 15px;
+  }
+  button {
+    margin: auto;
+    display:block;
+  }
+  .customerInput {
+    height: 40px;
+    width: 185px;
+    margin-top: 20px;
+    margin-left: 10px;
+ 
+  }
+  .dateInput {
+    width: 200px;
+    margin-left: 10px;
+    height: 40px;
+  }
+
+  .topdiv {
+    display: flex;
+    margin-bottom: 40px;
+    width:90% ;
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+   
+
+  }
+  .container{
+    background-color:#eceeef;
+    width: 100%;
+  }
+  .center {
+  
+    margin-left: 60px;
+  }
+  .datelabel{
+    margin-left: 45px;
+    margin-top: 30px;
+  }
+  .lastcol{
+   
+    border: none;
+  }
+  .lastrow{
+    width: 92%;
+    border:3px solid blue ;
+    margin-top: 20px;
+    
+  }
+  .lastlabel{
+    
+  margin-left: 60px;
+  }
+  .myImage{
+    width: 85%;
+    margin-left: 50px;
+  }
+  /* .divcustomerInput{
+  margin-left: 22rem;
+  
+  } */
