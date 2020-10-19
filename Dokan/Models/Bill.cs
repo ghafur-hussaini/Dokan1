@@ -8,7 +8,7 @@ namespace Dokan.Models
 {
     public class Bill
     {
-        [Key]
+        [Key] 
         public int number { get; set; }
         public string StuffName { get; set; }
         public int Price { get; set; }
