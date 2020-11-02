@@ -8,21 +8,23 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Dokan.Controllers
 {
-    [Route("/api/mydates")]
-    public class MyDatesController:Controller
+    [Route("/api/Incomings")]
+    public class ReceivedMeToYouController:Controller
     {
         private readonly DokanDbContext context;
 
-        public MyDatesController(DokanDbContext context )
+        public ReceivedMeToYouController(DokanDbContext context)
         {
             this.context = context;
         }
         [HttpPost]
-        public async Task<IActionResult> AddMyDates([FromBody] Time time)
+        
+        public async Task<IActionResult> AddIncomingRecords([FromBody]RecivedMeToYou newRecord)
         {
-            this.context.MyTimes.Add(time);
+           await this.context.Incomings.AddAsync(newRecord);
             await this.context.SaveChangesAsync();
-            return Ok(time);
+            return Ok(newRecord);
         }
+
     }
 }

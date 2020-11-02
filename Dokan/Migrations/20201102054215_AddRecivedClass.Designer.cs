@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dokan.Migrations
 {
     [DbContext(typeof(DokanDbContext))]
-    [Migration("20200815032346_addMeToYouClass")]
-    partial class addMeToYouClass
+    [Migration("20201102054215_AddRecivedClass")]
+    partial class AddRecivedClass
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,7 +28,7 @@ namespace Dokan.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("FactorId")
+                    b.Property<int>("FactorId")
                         .HasColumnType("int");
 
                     b.Property<int>("Price")
@@ -45,9 +45,7 @@ namespace Dokan.Migrations
 
                     b.HasKey("number");
 
-                    b.HasIndex("FactorId");
-
-                    b.ToTable("Sales");
+                    b.ToTable("FactorRecords");
                 });
 
             modelBuilder.Entity("Dokan.Models.Factor", b =>
@@ -66,15 +64,15 @@ namespace Dokan.Migrations
                     b.Property<string>("CustomerName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("Date")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("TodayDate")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Total")
                         .HasColumnType("int");
 
                     b.HasKey("FactorId");
 
-                    b.ToTable("SalesFactors");
+                    b.ToTable("Factors");
                 });
 
             modelBuilder.Entity("Dokan.Models.Inventory", b =>
@@ -116,6 +114,36 @@ namespace Dokan.Migrations
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("Dokan.Models.MeToYouSales", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("Amounf")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Balance")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Cash")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CustomerName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PhoneNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("date")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MeToYouSales");
+                });
+
             modelBuilder.Entity("Dokan.Models.Phone", b =>
                 {
                     b.Property<int>("Id")
@@ -126,7 +154,7 @@ namespace Dokan.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("customerID")
+                    b.Property<int>("customerID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -136,18 +164,34 @@ namespace Dokan.Migrations
                     b.ToTable("Phones");
                 });
 
-            modelBuilder.Entity("Dokan.Models.Bill", b =>
+            modelBuilder.Entity("Dokan.Models.RecivedMeToYou", b =>
                 {
-                    b.HasOne("Dokan.Models.Factor", null)
-                        .WithMany("Bills")
-                        .HasForeignKey("FactorId");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Cash")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Date")
+                        .HasColumnType("int");
+
+                    b.Property<int>("amount")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Incomings");
                 });
 
             modelBuilder.Entity("Dokan.Models.Phone", b =>
                 {
                     b.HasOne("Dokan.Models.MeToYouCustomer", "customer")
                         .WithMany("Phones")
-                        .HasForeignKey("customerID");
+                        .HasForeignKey("customerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

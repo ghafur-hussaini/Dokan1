@@ -10,6 +10,7 @@ namespace Dokan.Models
     {
         [Key] 
         public int number { get; set; }
+        public int FactorId { get; set; }
         public string StuffName { get; set; }
         public int Price { get; set; }
         public int Qty { get; set; }

@@ -12,4 +12,8 @@ export class SaleFactorService {
   public CreateSellingFactor(factor){
     return this.http.post(this.url,factor);
   }
+  public UpdateFactor(id:Int16Array,completeFactor)
+  {
+    return this.http.put(this.url + "/" + "id", completeFactor);
+  }
 }

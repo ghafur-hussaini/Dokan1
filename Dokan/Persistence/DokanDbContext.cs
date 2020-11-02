@@ -14,13 +14,14 @@ namespace Dokan.Persistence
                 
         }
         public DbSet<Inventory> inventories { get; set; }
-        public DbSet <Bill> Sales { get; set; }
-        public DbSet <Factor> SalesFactors  { get; set; }
+        public DbSet <Bill> FactorRecords { get; set; }
+        public DbSet <Factor> Factors  { get; set; }
         public DbSet <MeToYouCustomer> Customers { get; set; }
         public DbSet <Phone> Phones { get; set; }
         public DbSet <MeToYouSales> MeToYouSales { get; set; }
-        public DbSet<TestTime> Dates { get; set; }
-        public DbSet<Time> MyTimes { get; set; }
+        public DbSet<RecivedMeToYou> Incomings { get; set; }
+
+
 
     }
 }

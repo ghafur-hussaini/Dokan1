@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Dokan.Persistence;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace Dokan
 {
     public class Startup
@@ -27,6 +28,7 @@ namespace Dokan
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddControllersWithViews();
             services.AddAutoMapper(typeof(Startup));
+            
             services.AddDbContext<DokanDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddScoped<IInventoryRepository,InventroyRepository>();
             services.AddScoped<IBillRepository, BillRepository>();

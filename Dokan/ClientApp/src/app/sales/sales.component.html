@@ -173,7 +173,7 @@
   <div class="col-2">
      <select #quantity >
        <option value=""></option>
-       <option *ngFor="let q of Qty" [value]=q> {{q}}</option>
+       <option  *ngFor="let q of Qty" [value]=q> {{q}}</option>
       </select></div>
   <div class="col-3">
     <select (change)="onStuffChange(item)" #item>
@@ -184,9 +184,9 @@
   <div  class="col-1">{{n}}</div>
 </div>
 <div class="row lastrow">
- <div class="col-4 lastcol"><input type="text"><div><label class="lastlabel" for="">مجموع</label></div></div>
- <div class="col-4 lastcol" ><input type="text"><div><label class="lastlabel" for="">پرداختی</label></div></div>
- <div class="col-4 lastcol"><input type="text"><div><label class="lastlabel" for="">باقیمانده</label></div></div>
+ <div class="col-4 lastcol"><input [value]=this.Total #total type="text"><div><label class="lastlabel" for="">مجموع</label></div></div>
+ <div class="col-4 lastcol" ><input type="text" #cash><div><label class="lastlabel" for="">پرداختی</label></div></div>
+ <div class="col-4 lastcol"><input type="text" (click)="calculateBalance(cash.value)"><div><label class="lastlabel" for="">باقیمانده</label></div></div>
 </div>
 </div>
 

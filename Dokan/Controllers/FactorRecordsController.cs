@@ -9,12 +9,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace Dokan.Controllers
 {
     [Route("/api/sales")]
-    public class SalesController:Controller
+    public class FactorRecordsController:Controller
     {
         private readonly IBillRepository billRepository;
         private readonly IUnitOfWork unitOfWork;
 
-        public SalesController(IBillRepository billRepository,IUnitOfWork unitOfWork)
+        public FactorRecordsController(IBillRepository billRepository,IUnitOfWork unitOfWork)
         {
             this.billRepository = billRepository;
             this.unitOfWork = unitOfWork;

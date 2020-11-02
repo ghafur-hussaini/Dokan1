@@ -21,6 +21,7 @@ export class SalesComponent implements OnInit {
   bill :any;
   Factor;
   today= Date.now().toString();
+  Total=0;
 
 
   constructor(private stuffService :InventoryService,private SService:SellingBillService,private saleFactor: SaleFactorService,private customerService:CustomerService ) { }
@@ -48,27 +49,38 @@ onCalculateSum(quantity,price){
    stuffName:this.selectedStuff.stuffName,
    qty:parseInt(quantity),
    price:parseInt(price),
-   sum:this.onCalculateSum(quantity,price)
+   sum:this.onCalculateSum(quantity,price),
+   factorId: this.Factor.factorId
  };
- 
-this.SService.CreateSalesBill(this.bill).subscribe( res => console.log(res));
+ this.Total += this.onCalculateSum(quantity,price);
+this.SService.CreateSalesBill(this.bill).subscribe( res =>{ 
+ console.log(res);
+});
 }
 CreateSellingFactor(date,name){
- this.Factor={
+  let Factor={
    customerName:name,
-   date:date,
-   total:0,
+   todayDate:date,
+   total:this.Total,
    balance:0,
    cash:0,
    bill:[]
 }
 // console.log(date);
-this.saleFactor.CreateSellingFactor(this.Factor).subscribe(res =>
- console.log(res));
+this.saleFactor.CreateSellingFactor(Factor).subscribe(res =>{
+ this.Factor = res;
+ console.log(this.Factor);
+});
 }
+
 getCustomers(){
   this.customerService.getCustomer().subscribe(res =>
     console.log(res));
 }
-  
+calculateBalance(cash){
+  let balance =this.Total - cash;
+  console.log(balance);
+  return balance;
+}
+// updateFactor(this.Factor.FactorId,cash.value, balance.value )
 }

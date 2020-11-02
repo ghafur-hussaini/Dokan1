@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 
 namespace Dokan.Models
 {
-    public class TestTime
+    public class RecivedMeToYou
     {
         public int Id { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
+        public int amount { get; set; }
+        public int Cash { get; set; }
+        
     }
 }

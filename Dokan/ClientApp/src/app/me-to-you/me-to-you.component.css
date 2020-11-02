@@ -1,0 +1,24 @@
+
+.myLabel{
+    margin-right: 10px;
+    width: 8rem;
+}
+.container{
+    display: flex;
+    background-color: cadetblue;
+    width: 50%;
+    margin: auto;
+}
+.row{
+    display: block;
+}
+.myclass{
+    display: flex;
+    background-color: cadetblue;
+    width: 50%;
+    margin: auto;
+}
+.myLabel2{
+    margin-right: 10px;
+    width: 8rem;
+}

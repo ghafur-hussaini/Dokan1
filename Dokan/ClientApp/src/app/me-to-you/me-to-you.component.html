@@ -1,19 +1,73 @@
-<label >تاریخ</label>
+<div class="container">
+  <div class="row">
+<div>
+<label class="myLabel">تاریخ</label>
 <input type="text"#date [value]="today|date:long">
-<label for="">مشتریان</label>
+</div>
+<div>
+<label class="myLabel">مشتریان</label>
 <select  name="cselector" id="cselector"(change)="onChangeCustomer()"[(ngModel)]=customer #temp =ngModel >
   <option value=""></option>
   <option *ngFor="let c of customers" value="{{c.id}}">{{c.customerName}}</option>
 </select>
-<label for="">مقدار میتیو</label>
+</div>
+<div>
+<label class="myLabel">مقدار میتیو</label>
 <input  type="text"   #amoung>
-<label for="">شماره تلفن</label>
+</div>
+<div>
+<label class="myLabel">شماره تلفن</label>
 <select name="phone" id="phone" #phone >
   <option value=""></option>
    <option *ngFor="let p of PhonesArr"  value="{{p.phoneNumber}}">{{p.phoneNumber}}</option> 
 </select> 
-
-<label for="">مقدار پرداختی</label>
+</div>
+<div>
+<label class="myLabel">مقدار پرداختی</label>
 <input  type="text" #cash>
-<label for="">باقیمانده</label>
-<input  type="text" (keyup.enter)="onCalculateBalance(cash.value,amoung.value,phone.value,date.value)"[value]=this.remain >
+</div>
+<div>
+<label class="myLabel">باقیمانده</label>
+<input  type="text" (click)="onCalculateBalance(cash.value,amoung.value,phone.value,date.value)"[value]=this.remain #balance.value >
+</div>
+<button (click)="ChangeBalance()">save</button>
+</div>
+</div>
+<div style="justify-content: center; background-color: yellow; width: 50%; display: flex;margin: auto; text-align: center;">
+  <label>دریافتی میتیو</label>
+ </div>
+<div class="myclass">
+  <div style="display: block; ">
+    <div>
+      <label class="myLabel2">تاریخ</label>
+      <input type="text"type="text"#date [value]="today|date:long" >
+      <div>
+        <label  class="myLabel2">مقدار</label>
+        
+        <select #received >
+          <option value=""></option>
+          <option value="1000">1000</option>
+          <option value="500">500</option>
+          <option value="300">300</option>
+        </select>
+      </div>
+      <div>
+        <label  class="myLabel2">پرداختی</label>
+        <select #paid (change)="onCalculateBalance2(received.value,paid.value)">
+          <option value=""></option>
+          <option value="1000">1000</option>
+          <option value="500">500</option>
+          <option value="300">300</option>
+        </select>
+      </div>
+      <div>
+        <label class="myLabel2" >باقیمانده</label>
+        <input type="text" [value]=this.balance2 >
+      </div>
+      <div>
+        <button (click)="ChangeBalance2()" >save</button>
+      </div>
+     </div>
+  </div>
+
+ </div>

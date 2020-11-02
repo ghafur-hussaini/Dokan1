@@ -18,7 +18,7 @@ namespace Dokan.Persistence
 
         public void Add( Factor factor)
         {
-            context.SalesFactors.Add(factor);
+            context.Factors.Add(factor);
             
         }
     }

@@ -18,11 +18,11 @@ namespace Dokan.Persistence
         }
          public async Task<IEnumerable<Bill>> GetBills()
         {
-            return await context.Sales.ToListAsync();
+            return await context.FactorRecords.ToListAsync();
         }
         public void Add(Bill record)
         {
-            context.Sales.Add(record);
+            context.FactorRecords.Add(record);
            
         }
     }

@@ -19,13 +19,16 @@ export class MeToYouComponent implements OnInit {
  selectedCustomer;
  selectedPhones:{}[];
  remain;
+ MeToYouVendor;
 
   constructor(private customerService:CustomerService,private phoneservice:PhoneService,private mtyService:MeToYouService) { }
 
   ngOnInit() {
  this.customerService.getCustomer().subscribe( res =>{
   this.customers =res; 
+  this.customersArr = this.customers;
    console.log(this.customers);
+   this.MeToYouVendor = this.customersArr.find(c => c.id == 9);
   });
 
   }
@@ -44,7 +47,7 @@ export class MeToYouComponent implements OnInit {
       console.log(res));
     }
  onChangeCustomer(){
-   this.customersArr = this.customers;
+ 
   this.selectedCustomer =this.customersArr.find( c => c.id === parseInt(this.customer));
     console.log(this.selectedCustomer);
     this.phoneservice.getPhone(this.selectedCustomer.id).subscribe(res =>{
@@ -54,6 +57,26 @@ export class MeToYouComponent implements OnInit {
      })
     
     }
-   
-   
+   ChangeBalance(balance){
+     this.customerService.pushBalance(this.selectedCustomer.id, this.remain).subscribe( res =>{
+       console.log(res);
+      // console.log(balance);
+     })
+   }
+   onCalculateBalance2(received,paid){
+     console.log(this.MeToYouVendor.balance);
+     this.MeToYouVendor.balance += (received- paid);
+     console.log(this.MeToYouVendor.balance);
+   }
+   ChangeBalance2(){
+    //  this.MeToYouVendor={
+    //    id:this.MeToYouVendor.id,
+    //    customerName:this.MeToYouVendor.customerName,
+    //    balance:this.MeToYouVendor.balance,
+    //    phones:[]
+
+    //  }
+     this.customerService.pushBalance(9,this.MeToYouVendor).subscribe(res =>
+      console.log(res));
+   }
  }

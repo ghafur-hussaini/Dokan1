@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 
 namespace Dokan.Models
 {
-    public class Factor
+    public class FactorResource
     {
         public int FactorId { get; set; }
 
@@ -17,7 +16,10 @@ namespace Dokan.Models
 
         public int Cash { get; set; }
         public int Total { get; set; }
-        
-
+        public ICollection<Bill> Bills { get; set; }
+        public FactorResource()
+        {
+            Bills = new Collection<Bill>();
+        }
     }
 }
